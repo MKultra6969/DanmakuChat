@@ -1,0 +1,81 @@
+@keyframes slide-left {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-left-bounce {
+  0% {
+    transform: translateX(100vw) translateY(0);
+  }
+  25% {
+    transform: translateX(75vw) translateY(-20px);
+  }
+  50% {
+    transform: translateX(50vw) translateY(0);
+  }
+  75% {
+    transform: translateX(25vw) translateY(-20px);
+  }
+  100% {
+    transform: translateX(-100vw) translateY(0);
+  }
+}
+
+@keyframes slide-left-liquid {
+  0% {
+    transform: translateX(100vw) translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(75vw) translateY(-5px) rotate(2deg);
+  }
+  50% {
+    transform: translateX(50vw) translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateX(25vw) translateY(5px) rotate(-2deg);
+  }
+  100% {
+    transform: translateX(-100vw) translateY(0) rotate(0deg);
+  }
+}
+
+.chat-message {
+  position: absolute;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  top: calc(10% + 80% * var(--rand));
+  left: 0;
+  animation: var(--animation); 
+}
+
+.username {
+  font-weight: bold;
+}
+
+.message-text {
+}
+
+.emote {
+  vertical-align: middle;
+  height: 50px;
+}
+
+.badge {
+  vertical-align: middle;
+  margin-right: 5px;
+}
