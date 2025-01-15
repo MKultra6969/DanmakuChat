@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Connecting to twitch
   const client = new tmi.Client({
     connection: { reconnect: true },
-    channels: ['ffl0wer'] // 'Your Nickname on twitch'
+    channels: ['НИК'] // 'Your Nickname on twitch'
   });
 
   client.connect().catch(console.error);
