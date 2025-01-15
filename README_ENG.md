@@ -1,3 +1,5 @@
+[🇷🇺Русский](https://github.com/MKultra6969/DanmakuChat/blob/main/README.md)
+
 # Twitch Danmaku Chat Overlay (DCO)🌟
 
 This project is a beautiful and customizable Twitch chat overlay that can be used during streams. The overlay supports animations, custom fonts, emojis, and badges. 🎉
