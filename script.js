@@ -1,40 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('chat-container');
 
-  // Connecting to twitch
+  // Подключаемся к чату Twitch
   const client = new tmi.Client({
     connection: { reconnect: true },
-    channels: ['НИК'] // 'Your Nickname on twitch'
+    channels: ['ffl0wer']
   });
 
   client.connect().catch(console.error);
 
-  // rand colors
+  // Список рандомных цветов для текста
   const textColors = ['#ff4c4c', '#4cff4c', '#4c4cff', '#ffc04c', '#ff4cff'];
 
-  // emotes
+  // Функция для обработки смайликов
   function parseEmotes(message, emotes) {
-    if (!emotes) return message;
+    if (!emotes) return message; // Если смайликов нет, возвращаем исходное сообщение
 
-    const emoteKeys = Object.keys(emotes);
-    const splitText = message.split('');
+    const emoteKeys = Object.keys(emotes); // Все смайлики
+    const splitText = message.split(''); // Разбиваем сообщение на массив символов
+
     emoteKeys.forEach((id) => {
-      const positions = emotes[id];
+      const positions = emotes[id]; // Позиции каждого смайлика
       positions.forEach((pos) => {
         const [start, end] = pos.split('-').map(Number);
         const emoteURL = `https://static-cdn.jtvnw.net/emoticons/v2/${id}/default/dark/1.0`;
 
+        // Заменяем символы смайлика на HTML <img>
         splitText[start] = `<img src="${emoteURL}" alt="emote" class="emote">`;
         for (let i = start + 1; i <= end; i++) {
-          splitText[i] = '';
+          splitText[i] = ''; // Очищаем символы, которые заменили
         }
       });
     });
 
-    return splitText.join('');
+    return splitText.join(''); // Собираем сообщение обратно
   }
 
-  // Badges
+  // Функция для получения URL бейджа
   function getBadgeURL(badgeName) {
     const badgeURLs = {
       'watching-without-audio': 'https://static-cdn.jtvnw.net/badges/v1/aef2cd08-f29b-45a1-8c12-d44d7fd5e6f0/1',
@@ -48,21 +50,23 @@ document.addEventListener('DOMContentLoaded', () => {
     return badgeURLs[badgeName] || null;
   }
 
+  // Функция добавления сообщения
   function addMessage(username, text, usernameColor, badges) {
     const message = document.createElement('div');
     message.className = 'chat-message';
   
-    // rand height
+    // Рандомная высота через CSS-переменную
     message.style.setProperty('--rand', Math.random());
   
-    // rand font size
+    // Рандомный размер шрифта
     const randomFontSize = Math.floor(Math.random() * 16) + 20; // Размер от 20px до 36px
     message.style.fontSize = `${randomFontSize}px`;
   
-    // using selected animation in config.js
+    // Применяем выбранную анимацию через CSS-переменную
     const selectedAnimation = config.animations[config.selectedAnimation];
     message.style.setProperty('--animation', selectedAnimation);
   
+    // Генерируем HTML с бейджами, цветным ником и текстом
     const randomTextColor = textColors[Math.floor(Math.random() * textColors.length)];
     let badgesHTML = '';
   
@@ -83,16 +87,20 @@ document.addEventListener('DOMContentLoaded', () => {
   
     container.appendChild(message);
   
+    // Удаляем сообщение после завершения анимации
     message.addEventListener('animationend', () => {
       message.remove();
     });
   }
 
+  // Обработка входящих сообщений
   client.on('message', (channel, tags, message, self) => {
     if (self) return;
 
+    // Парсим смайлики
     const parsedMessage = parseEmotes(message, tags.emotes);
 
+    // Добавляем сообщение с бейджами, цветным ником и рандомным текстом
     addMessage(tags['display-name'], parsedMessage, tags.color || '#ffffff', tags.badges);
   });
 });

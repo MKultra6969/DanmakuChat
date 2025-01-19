@@ -1,12 +1,14 @@
+/* Основная анимация slide-left */
 @keyframes slide-left {
   0% {
-    transform: translateX(100vw);
+    transform: translateX(100vw); /* Начинаем с правой границы экрана */
   }
   100% {
-    transform: translateX(-100vw);
+    transform: translateX(-100vw); /* Заканчиваем за левой границей экрана */
   }
 }
 
+/* Анимация fade-out */
 @keyframes fade-out {
   0% {
     opacity: 1;
@@ -16,42 +18,47 @@
   }
 }
 
+/* Анимация slide-left с bounce */
 @keyframes slide-left-bounce {
   0% {
-    transform: translateX(100vw) translateY(0);
+      transform: translateX(100vw) translateY(0);
   }
   25% {
-    transform: translateX(75vw) translateY(-20px);
+      transform: translateX(75vw) translateY(-20px);
   }
   50% {
-    transform: translateX(50vw) translateY(0);
+      transform: translateX(50vw) translateY(0);
   }
   75% {
-    transform: translateX(25vw) translateY(-20px);
+      transform: translateX(25vw) translateY(-20px);
   }
   100% {
-    transform: translateX(-100vw) translateY(0);
+      transform: translateX(-100vw) translateY(0);
   }
 }
 
+
+/* Анимация slide-left с liquid */
 @keyframes slide-left-liquid {
   0% {
-    transform: translateX(100vw) translateY(0) rotate(0deg);
+      transform: translateX(100vw) translateY(0) rotate(0deg);
   }
   25% {
-    transform: translateX(75vw) translateY(-5px) rotate(2deg);
+      transform: translateX(75vw) translateY(-5px) rotate(2deg);
   }
   50% {
-    transform: translateX(50vw) translateY(0) rotate(0deg);
+      transform: translateX(50vw) translateY(0) rotate(0deg);
   }
   75% {
-    transform: translateX(25vw) translateY(5px) rotate(-2deg);
+      transform: translateX(25vw) translateY(5px) rotate(-2deg);
   }
   100% {
-    transform: translateX(-100vw) translateY(0) rotate(0deg);
+      transform: translateX(-100vw) translateY(0) rotate(0deg);
   }
 }
 
+
+/* Стили для сообщений */
 .chat-message {
   position: absolute;
   font-weight: bold;
@@ -60,7 +67,7 @@
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   top: calc(10% + 80% * var(--rand));
   left: 0;
-  animation: var(--animation); 
+  animation: var(--animation); /* Применяем анимацию через CSS-переменную */
 }
 
 .username {
@@ -68,14 +75,16 @@
 }
 
 .message-text {
+  /* Шрифт задается через конфиг */
 }
 
 .emote {
   vertical-align: middle;
-  height: 50px;
+  height: 50px; /* Размер смайликов */
 }
 
 .badge {
   vertical-align: middle;
   margin-right: 5px;
 }
+
