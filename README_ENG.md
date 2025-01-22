@@ -91,5 +91,5 @@ This project is distributed under the WTFPL license. For more details, see the [
 
 ---
 
-Created with HATE FOR PEOPLE by [mkultra69](https://github.com/mkultra69). If you have questions or suggestions, NEVER WRITE THEM BECAUSE I ABSOLUTELY DON'T CARE! 😊
+Created with HATE FOR PEOPLE by [mkultra6969](https://github.com/mkultra6969). If you have questions or suggestions, NEVER WRITE THEM BECAUSE I ABSOLUTELY DON'T CARE! 😊
 
